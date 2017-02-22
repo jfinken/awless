@@ -25,15 +25,16 @@ var DefaultsColumnDefinitions = map[graph.ResourceType][]ColumnDefinition{
 	//EC2
 	graph.Instance: {
 		StringColumnDefinition{Prop: "Id"},
-		StringColumnDefinition{Prop: "SubnetId"},
-		StringColumnDefinition{Prop: "Name"},
+		//StringColumnDefinition{Prop: "SubnetId"},
+		StringColumnDefinition{Prop: "Name", TruncateSize: 50, TruncateRight: false, DisableTruncate: false},
 		ColoredValueColumnDefinition{
-			StringColumnDefinition: StringColumnDefinition{Prop: "State"},
+			StringColumnDefinition: StringColumnDefinition{Prop: "State", DisableTruncate: false, TruncateSize: 7},
 			ColoredValues:          map[string]color.Attribute{"running": color.FgGreen, "stopped": color.FgRed},
 		},
 		StringColumnDefinition{Prop: "Type"},
 		StringColumnDefinition{Prop: "KeyName", Friendly: "Access Key"},
-		StringColumnDefinition{Prop: "PublicIp", Friendly: "Public IP"},
+		//StringColumnDefinition{Prop: "PublicIp", Friendly: "Public IP"},
+		StringColumnDefinition{Prop: "PrivateIp", Friendly: "Private IP"},
 		TimeColumnDefinition{StringColumnDefinition: StringColumnDefinition{Prop: "LaunchTime"}},
 	},
 	graph.Vpc: {
